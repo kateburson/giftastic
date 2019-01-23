@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container-left {
+    float:left;
+    width: 40%;
+    background-color: azure;
+}
+
+.container-right {
+    width: 60%;
+    float: right;
+    background-color: black;
+}
+
+ h1{
+    font-family: 'Noto Serif SC', serif;
+    font-weight: lighter;
+    font-size: 60pt;
+}
+
+.definition {
+    position: relative;
+    width: 80%;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+    padding-left: 25px;
+}
+
+.display{
+    margin-top: 25px;
+    padding-left: 25px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* label#verb-input {
+    float: left;
+}
+
+input#verb-input{
+    float: right;
+} */
