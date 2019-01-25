@@ -4,12 +4,9 @@ $(document).ready(function() {
         'skip',
         'leap',
         'frolick',
-        'wiggle',
-        'mime'
+        'shimmy',
     ];
 
-    var gifURL = [];
-    var gifRating = [];
 
     function newButtons() {
 
@@ -39,32 +36,39 @@ $(document).ready(function() {
 
 
     function doSearch() {
-
         console.log('clicked');
+        $('#verb-view').empty();
 
         var button = $(this).text();
         console.log(button);
 
-        var queryURL = $.get("https://api.giphy.com/v1/gifs/search?q=" + button + "&api_key=Uhq8lpKKXrzJXUNAcSLTiGSBjjn2VrZa&limit=10");
-        queryURL.done(function(data) { console.log("success got data", data); });
+        $('#title').html(button);
+
+
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + button + "&api_key=Uhq8lpKKXrzJXUNAcSLTiGSBjjn2VrZa&limit=10$rating=pg-13";
+        
+        
 
         $.ajax({
             url: queryURL,
-            method: "GET"
+            method: "GET",
         }).then(function(response){
             console.log(queryURL);
             console.log(response);
-            $('#verb-view').empty();
-            for(var i = 0; i < response.data.length; i++) {
-                gifURL.push(response.data[i].bitly_url);
-                gifRating.push(response.data[i].rating);
+            for(var i = 0; i < queryURL.length; i++) {
+                var div = $('<div class="image-container">');
+                var p = $('<p>');
+                var img = $('<img>');
+                var imgURL = response.data[i].images.downsized.url;
+                img.attr({src: imgURL, width: '300px', height: 'auto'});
+                $(div).append(img);
+                $(p).append(response.data[i].rating);
+                $(div).append(p);
+                $('#verb-view').append(div);
             } 
-        });
+        }); 
         
-        for(var i = 0; i < 10; i++){
-        $('#verb-view').append('<img src="' + gifURL + '">');
-        $('#verb-view').append('<p>Rating: ' + gifRating + '</p>');
-        }
+
 
     }; // doSearch
 

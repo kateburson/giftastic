@@ -5,42 +5,102 @@
 
 .container-left {
     float:left;
-    width: 40%;
+    width: 30%;
     background-color: azure;
+    padding: 25px 50px 50px 50px;
 }
 
 .container-right {
-    width: 60%;
+    width: 70%;
     float: right;
     background-color: black;
+    padding: 50px;
 }
 
  h1{
     font-family: 'Noto Serif SC', serif;
     font-weight: lighter;
-    font-size: 60pt;
+    font-size: 40pt;
 }
 
 .definition {
-    position: relative;
     width: 80%;
+}
+
+hr {
+    border-top: .5pt solid black;
 }
 
 p {
     font-family: 'Open Sans', sans-serif;
-    padding-left: 25px;
 }
 
-.display{
-    margin-top: 25px;
-    padding-left: 25px;
+input {
+    border: none;
+    background-color: black;
+    height: 1.5em;
+    color: white;
+}
+
+input:hover {
+    box-shadow: none;
+}
+
+input:active {
+    box-shadow: none;
+}
+
+#input-box {
+    /* float:left; */
+    width: 20%;
+}
+
+label {
+    display: block;
+}
+
+::placeholder {
+    color: white;
     font-family: 'Open Sans', sans-serif;
+    font-weight: lighter;
 }
 
-/* label#verb-input {
+.searchbutton, 
+#add-verb {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: lighter;
+    border: none;
+    background-color: black;
+    width: auto;
+    color: white;
+    height: 1.5em;
+    padding: 0 10px 10px 10px;
+    margin-right: 5px;
+}
+
+#add-verb {
+    margin-top: 15px;
+}
+
+form {
+    max-width: 50%;
+}
+
+
+.searchbutton:focus {
+    border: none;
+    box-shadow: none;
+    outline: 0;
+}
+
+.searchbutton:hover {
+    background-color: white;
+    color: black;
+}
+
+.image-container {
     float: left;
+    margin-right: 15px;
 }
 
-input#verb-input{
-    float: right;
-} */
+
