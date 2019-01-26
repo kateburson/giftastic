@@ -14,16 +14,15 @@ $(document).ready(function() {
         verbs.push(input);
         $('.button-farm').append('<button class="searchbutton" value="' + input + '">' + input + '</button>');
 
-        $('#add-verb').on('click', function(){
-            newButtons();
-            $('#verb-input').val('');
-    
-        });
-
-        renderButtons();  
-
+        renderButtons(); 
 
     }; //newButtons
+
+    $('#add-verb').on('click', function(){
+        newButtons();
+        $('#verb-input').val('');
+
+    });
 
     function renderButtons() {
         $('.button-farm').html('');
