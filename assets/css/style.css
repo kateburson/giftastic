@@ -3,18 +3,25 @@
     padding: 0;
 }
 
+/* body {
+    background-image: linear-gradient(lightseagreen, magenta);
+    height: 100%;
+
+} */
+
 .container-left {
+    height: 100%;
     float:left;
     width: 30%;
-    background-color: azure;
     padding: 25px 50px 50px 50px;
 }
 
 .container-right {
     width: 70%;
     float: right;
-    background-color: black;
+    /* background-color: black; */
     padding: 50px;
+    min-height: 100%;
 }
 
  h1{
@@ -50,9 +57,11 @@ input:active {
     box-shadow: none;
 }
 
-#input-box {
+#verb-input {
     /* float:left; */
-    width: 20%;
+    width: 250px;
+    height: 2em;
+    text-align: center;
 }
 
 label {
@@ -63,6 +72,7 @@ label {
     color: white;
     font-family: 'Open Sans', sans-serif;
     font-weight: lighter;
+    display: inline;
 }
 
 .searchbutton, 
@@ -71,15 +81,22 @@ label {
     font-weight: lighter;
     border: none;
     background-color: black;
-    width: auto;
+    border: solid 2pt black;
+    width: 250px;
     color: white;
-    height: 1.5em;
-    padding: 0 10px 10px 10px;
+    height: 2em;
+    padding: 2.5 10px 10px 10px;
     margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+#button-farm{
+    margin-top: 15px;
 }
 
 #add-verb {
-    margin-top: 15px;
+    margin-top: 5px;
+    width: 250px;
 }
 
 form {
@@ -87,20 +104,36 @@ form {
 }
 
 
-.searchbutton:focus {
+.searchbutton:focus,
+#add-verb:focus {
     border: none;
     box-shadow: none;
     outline: 0;
 }
 
-.searchbutton:hover {
-    background-color: white;
+.searchbutton:hover,
+#add-verb:hover {
+    background-color: rgba(0,0,0,0);
     color: black;
+    border: solid 2pt black;
+}
+
+#verb-view {
+    width: 100%;
 }
 
 .image-container {
     float: left;
     margin-right: 15px;
+    margin-bottom: 15px;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+}
+
+img {
+    min-width: 100%;
+    min-height: 100%;
 }
 
 
