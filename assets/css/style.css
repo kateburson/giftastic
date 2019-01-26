@@ -3,11 +3,10 @@
     padding: 0;
 }
 
-/* body {
-    background-image: linear-gradient(lightseagreen, magenta);
-    height: 100%;
+body {
+    background-color: lightgray;
 
-} */
+}
 
 .container-left {
     height: 100%;
@@ -42,6 +41,8 @@ p {
     font-family: 'Open Sans', sans-serif;
     position: relative;
     color: black;
+    margin-left: 10px;
+    margin-top: 5px;
 }
 
 input {
@@ -126,12 +127,13 @@ form {
 
 .image-container {
     float: left;
-    margin-right: 7.5px;
-    margin-left: 7.5px;
+    margin-right: 10px;
+    margin-left: 10px;
     margin-bottom: 15px;
     width: 300px;
     height: 300px;
     overflow: hidden;
+    box-shadow: black -5px 5px;
 }
 
 img {
