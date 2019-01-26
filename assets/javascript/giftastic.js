@@ -21,7 +21,6 @@ $(document).ready(function() {
     $('#add-verb').on('click', function(){
         newButtons();
         $('#verb-input').val('');
-
     });
 
     function renderButtons() {
