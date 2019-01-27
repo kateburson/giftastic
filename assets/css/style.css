@@ -64,7 +64,7 @@ input:active {
     /* float:left; */
     width: 300px;
     height: 2em;
-    text-align: center;
+    padding-left: 5px;
 }
 
 label {
@@ -118,7 +118,7 @@ form {
 #add-verb:hover {
     background-color: rgba(0,0,0,0);
     color: black;
-    border: solid 2pt black;
+    border: solid 1pt black;
 }
 
 #verb-view {
@@ -141,4 +141,11 @@ img {
     height: 90%;
 }
 
+#list {
+    text-transform: lowercase;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16pt;
+    line-height: 28pt;
+    text-align: justify;
+}
 

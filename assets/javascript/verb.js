@@ -1,10 +1,12 @@
 $(document).ready(function() {
     
     var verbs = [
-        'skip',
-        'leap',
+        'sip',
+        'giggle',
+        'smile',
         'frolick',
         'shimmy',
+        'roll',
     ];
 
 
@@ -13,7 +15,7 @@ $(document).ready(function() {
         var input = $('#verb-input').val();
         verbs.push(input);
         $('.button-farm').append('<button class="searchbutton" value="' + input + '">' + input + '</button>');
-
+        
         renderButtons(); 
 
     }; //newButtons
@@ -24,6 +26,7 @@ $(document).ready(function() {
     });
 
     function renderButtons() {
+        $('#verb-input').focus();
         $('.button-farm').html('');
         for (var i = 0; i < verbs.length; i++) {
             var button = $('<button>');
@@ -38,6 +41,7 @@ $(document).ready(function() {
 
 
     function doSearch() {
+        $('#list').css({'display': 'none'});
         console.log('clicked');
         $('#verb-view').empty();
 
