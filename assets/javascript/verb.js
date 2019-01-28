@@ -15,7 +15,7 @@ $(document).ready(function() {
         var input = $('#verb-input').val();
         verbs.push(input);
         $('.button-farm').append('<button class="searchbutton" value="' + input + '">' + input + '</button>');
-        
+
         renderButtons(); 
 
     }; //newButtons
@@ -27,6 +27,7 @@ $(document).ready(function() {
 
     function renderButtons() {
         $('#verb-input').focus();
+
         $('.button-farm').html('');
         for (var i = 0; i < verbs.length; i++) {
             var button = $('<button>');
@@ -71,7 +72,8 @@ $(document).ready(function() {
                 img.attr({src: still, 'data-still': still, 'data-animate': source, 'data-state' : 'still' , width: '300px', height: 'auto'});
                 $(div).append(img);
                 $(p).append(response.data[i].rating.toUpperCase());
-                $(div).append(p);
+                var smallHeart = $('<i class="far fa-heart small"></i>');
+                $(div).append(p, smallHeart);
                 $('#verb-view').append(div);
             } 
 
@@ -86,12 +88,35 @@ $(document).ready(function() {
                     $(this).attr('src',$(this).attr('data-still'));
                     $(this).attr('data-state','still');
                 } 
-        
+            });
+
+            $('.fa-heart').on('click', function() {
+                var state = $(this).attr('class');
+                // var gif = $(this).
+                console.log('heart clicked', state);
+                if(state === 'far fa-heart small') {
+                    $(this).attr('class','fas fa-heart small');
+                } else if(state === 'fas fa-heart small') {
+                    $(this).attr('class','far fa-heart small');
+                }
             });
 
         }); 
 
     }; // doSearch
+
+    var favorites = [];
+     
+    $('.favorites').on('click', function() {
+        $('#verb-view').empty();
+        var state = $(this).attr('class');
+        console.log('favorites heart clicked', state);
+        if(state === 'far fa-heart favorites') {
+            $(this).attr('class','fas fa-heart favorites');
+        } else if (state === 'fas fa-heart favorites'){
+            $(this).attr('class','far fa-heart favorites');
+        }
+    });
 
     renderButtons();
 

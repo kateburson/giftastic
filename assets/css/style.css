@@ -10,7 +10,6 @@ body {
 
 .container-left {
     height: 100%;
-    float: ;
 
     padding: 25px 50px 50px 50px;
 }
@@ -40,9 +39,24 @@ hr {
 p {
     font-family: 'Open Sans', sans-serif;
     position: relative;
+    float:left;
     color: black;
     margin-left: 10px;
     margin-top: 5px;
+}
+
+.small {
+    position: relative;
+    float: right;
+    color: black;
+    margin-right: 10px;
+    margin-top: 8px;
+}
+
+.favorites{
+    color: black;
+    float: left;
+    font-size: 24pt;
 }
 
 input {
@@ -85,7 +99,7 @@ label {
     border: none;
     background-color: black;
     border: solid 2pt black;
-    min-width: 30%;
+    min-width: 32%;
     color: white;
     height: 2em;
     padding: 2.5 10px 10px 10px;
