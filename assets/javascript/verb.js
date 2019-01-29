@@ -1,16 +1,20 @@
 $(document).ready(function() {
     
+    // defining variables
     var verbs = [
         'sip',
         'giggle',
-        'smile',
+        'boogie',
         'frolick',
         'shimmy',
         'roll',
     ];
 
+    var clicked = false; 
+
     var favoriteGifs = [];
 
+    // defining functions
     function animate() {
         var state = $(this).attr('data-state');
         if(state === 'still'){
@@ -24,17 +28,60 @@ $(document).ready(function() {
 
     function favorite() {
         var state = $(this).attr('class');
-        var favGif = $(this).parent().find($('<img>'));
+        var favGif = $(this).parent().find($('<innerHTML>'));
         if(state === 'far fa-heart small') {
             $(this).attr('class','fas fa-heart small');
             favoriteGifs.push(favGif);
             console.log('gif added to favorites');
+            console.log(favoriteGifs);
         } else if(state === 'fas fa-heart small') {
             $(this).attr('class','far fa-heart small');
-            favoriteGifs.splice(favoriteGifs.indexOf(favGif), 1);
+            favoriteGifs.splice(favoriteGifs.indexOf($('this'), 1));
+            console.log('gif removed from favorites');
+            console.log(favoriteGifs);
+
+            if(clicked === true) {
+                $('#verb-view').empty();
+                for(var i = 0; i < favoriteGifs.length; i++) {
+                    var div = $('<div class="image-container">');
+                    var info = favoriteGifs[i].prevObject[0].innerHTML;
+                    $(div).append(info);
+                    $('#verb-view').append(div);
+                }
+
+            }
+
+            $('.fa-heart').on('click', favorite);
+
         }
-        console.log(favoriteGifs);
-    }
+    }; // end favorite
+
+    function populateFavorites() {
+        $('#title').text('favorites');
+        $('#verb-view').empty();
+        var state = $(this).attr('class');
+        console.log('favorites heart clicked');
+        if(state === 'far fa-heart favorites-button' && clicked === false) {
+            clicked = true;
+            $(this).attr('class','fas fa-heart favorites-button');
+            for(var i = 0; i < favoriteGifs.length; i++) {
+                var div = $('<div class="image-container">');
+                var info = favoriteGifs[i].prevObject[0].innerHTML;
+                console.log(info);
+                $(div).append(info);
+                $('#verb-view').append(div);
+            }
+        } else if (state === 'fas fa-heart favorites-button' && clicked === true) {
+            clicked = false
+            $(this).attr('class','far fa-heart favorites-button');
+        }
+
+        $('.gif').on("click", animate);
+
+        $('.fa-heart').on('click', favorite);
+
+        $('#verb-input').focus();
+    }; // end populateFavorites
 
     function newButtons() {
         event.preventDefault()
@@ -42,14 +89,10 @@ $(document).ready(function() {
         verbs.push(input);
         $('.button-farm').append('<button class="searchbutton" value="' + input + '">' + input + '</button>');
 
-        renderButtons(); 
-
-    }; //newButtons
-
-    $('#add-verb').on('click', function(){
-        newButtons();
         $('#verb-input').val('');
-    });
+
+        renderButtons(); 
+    }; // end newButtons
 
     function renderButtons() {
         $('#verb-input').focus();
@@ -63,8 +106,7 @@ $(document).ready(function() {
         }
 
         $('.searchbutton').on('click', doSearch);
-
-    }; // renderButtons
+    }; // end renderButtons
 
 
     function doSearch() {
@@ -77,11 +119,8 @@ $(document).ready(function() {
 
         $('#title').html(button);
 
-
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + button + "&api_key=Uhq8lpKKXrzJXUNAcSLTiGSBjjn2VrZa&limit=10$rating=pg-13";
         
-        
-
         $.ajax({
             url: queryURL,
             method: "GET",
@@ -109,33 +148,19 @@ $(document).ready(function() {
             
             $('#verb-input').focus();
 
+            $('.searchbutton').on('click', function(){
+                clicked = false;
+                $('.favorites-button').attr('class','far fa-heart favorites-button');
+            });
         }); 
+    }; // end doSearch
 
-    }; // doSearch
-     
-    $('.favorites').on('click', function() {
-        $('#verb-view').empty();
-        var state = $(this).attr('class');
-        console.log('favorites heart clicked', state);
-        if(state === 'far fa-heart favorites') {
-            $(this).attr('class','fas fa-heart favorites');
-            for(var i = 0; i < favoriteGifs.length; i++) {
-                var div = $('<div class="image-container">');
-                var info = favoriteGifs[i].prevObject[0].innerHTML;
-                console.log(info);
-                $(div).append(info);
-                $('#verb-view').append(div);
-            }
-        } else if (state === 'fas fa-heart favorites'){
-            $(this).attr('class','far fa-heart favorites');
-        }
-
-        $('.gif').on("click", animate);
-
-        $('.fa-heart').on('click', favorite);
-
-    });
+    // calling functions
+    $('#add-verb').on('click', newButtons);
+    
+    $('.favorites-button').on('click', populateFavorites);
 
     renderButtons();
+    // favorite();
 
-}); // document.ready
+}); // end document.ready
